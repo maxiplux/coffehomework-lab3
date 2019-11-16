@@ -4,6 +4,15 @@ public class User {
     String name;
     String password;
 
+    public User(String username, String password) {
+        this.name=username;
+        this.password=password;
+    }
+
+    public User() {
+
+    }
+
     public String getName() {
         return name;
     }

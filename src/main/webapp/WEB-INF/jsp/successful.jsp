@@ -6,6 +6,9 @@
 </head>
 <body>
 <h2>Login Successful</h2>
+
+<label>User: <strong>${user.name}</strong></label>
+
 <p />
 <form action="/advice/" method="get">
 <input type = "submit" value = "Get Advice"/>

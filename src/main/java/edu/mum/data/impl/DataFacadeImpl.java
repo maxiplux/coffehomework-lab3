@@ -1,9 +1,11 @@
 package edu.mum.data.impl;
 
 import edu.mum.data.DataFacade;
+import edu.mum.data.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 // Implements Singleton Pattern
 @Component
@@ -18,10 +20,13 @@ public class DataFacadeImpl implements DataFacade {
 
     }
 
-    public String findPassword(String name) {
-        String expectedPassword = data.getPassword(name);
-        return expectedPassword;
+    @Override
+    public Optional<User> findUserPassword(String name, String password) {
+
+        return data.findUserPassword(name,password);
     }
+
+
 
     public List<String> getAdvice(String roast) {
         return data.getAdvice(roast);

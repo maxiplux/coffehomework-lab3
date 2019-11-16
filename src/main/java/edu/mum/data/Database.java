@@ -1,11 +1,13 @@
 package edu.mum.data;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Database {
-    String getPassword(String name);
+    abstract Optional<User> getPassword(String name);
+
+    Optional<User> findUserPassword(String name, String password);
 
     List<String> getAdvice(String roast);
 
-    String findPassword(String name);
 }

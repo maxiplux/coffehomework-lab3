@@ -1,13 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="DemoOldtoNew:war exploded">
-    <output-path>$PROJECT_DIR$/target/DemoOldtoNew-0.0.1-SNAPSHOT</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>DemoOldtoNew</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+  <artifact type="exploded-war" name="coffe:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/coffe_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -26,9 +19,6 @@
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/DemoOldtoNew-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="coffe/web/Web" />
     </root>

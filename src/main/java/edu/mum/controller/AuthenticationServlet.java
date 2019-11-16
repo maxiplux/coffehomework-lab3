@@ -2,13 +2,17 @@ package edu.mum.controller;
 
 
 import edu.mum.data.DataFacade;
+import edu.mum.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+
+import java.util.Optional;
 
 @Controller
+@SessionAttributes("user")
 public class AuthenticationServlet {
 
     @Autowired
@@ -21,15 +25,38 @@ public class AuthenticationServlet {
         return "login";
     }
 
+    @ModelAttribute("user")
+    public User setUpUserForm() {
+        return new User();
+    }
+
 
     @RequestMapping(value = "/login/", method = RequestMethod.POST)
-    protected String doPost(@RequestParam("name") String name, @RequestParam("password") String password) {
-        String expectedPassword = data.findPassword(name);
-        if (expectedPassword == null || !expectedPassword.equals(password)) {
-            return "login";
+    protected String doPost(@ModelAttribute("user")  User requestUser, Model model) {
 
-        }
-        return "LoginSuccessful";
+        Optional<User> user = data.findUserPassword(requestUser.getName(),requestUser.getPassword());
 
+         if (user.isPresent() )
+         {
+
+             model.addAttribute("user",user.get());
+             return "redirect:/successful";
+         }
+
+        return "login";
+
+    }
+
+
+    @RequestMapping(value="/successful")
+    public String loginSuccessful(@ModelAttribute("user")  User requestUser) {
+        return "successful";
+    }
+
+
+    @RequestMapping(value="/logout")
+    public String logout(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/";
     }
 }

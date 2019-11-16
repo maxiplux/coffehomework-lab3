@@ -10,6 +10,11 @@
 </head>
 <body>
 	<h2>Starbuck's ${param["roast"]} Roast Coffees:</h2>
+	<label>User: <strong>${user.name}</strong></label>
+	<form action="/logout" method="get">
+		<input type="submit" value="Logout">
+	</form>
+
 	<form action="/advice/" method="get">
  		
 <table >

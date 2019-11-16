@@ -13,6 +13,11 @@
 <body>
 <h2>Ask for advice about your favorite roast:</h2>
 <p />
+<label>User: <strong>${user.name}</strong></label>
+
+<form action="/logout" method="get">
+	<input type="submit" value="Logout">
+</form>
 
 <form action = "/advice/" method="post">
 <select name="roast"  >
